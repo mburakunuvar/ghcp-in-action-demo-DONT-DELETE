@@ -20,7 +20,33 @@ jobs:
           COUNT=$(gh issue list --repo ${{ github.repository }} --json number --jq 'length')
           echo "issue_count=$COUNT" >> $GITHUB_OUTPUT
 
-      - name: Issue 1 — Scaffold and Beautify the Home Page
+      - name: Issue 1 — Azure Static Web App Setup
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Azure Static Web App Setup" \
+            --body "## Task
+          Set up the Azure Static Web App before the live demo begins. This gets the blank pages deployed to Azure so the live URL is accessible from the start of the demo.
+
+          ### Steps
+          1. Go to the [Azure Portal](https://portal.azure.com) and create a new **Static Web App**
+          2. Connect it to this GitHub repository (select the \`main\` branch)
+          3. Set \`app_location\` to \`/\` and leave \`output_location\` blank
+          4. Copy the **deployment token** from the Azure Portal
+          5. In this repository, go to **Settings → Secrets and variables → Actions**
+          6. Add a new secret named \`AZURE_STATIC_WEB_APPS_API_TOKEN\` and paste the token
+          7. The GitHub Actions workflow (\`.github/workflows/azure-static-web-apps.yml\`) will trigger automatically and deploy the blank pages
+          8. Verify the live URL is accessible before going on stage
+
+          > ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue 2**.
+
+          ## Note
+          This issue is done **before** the live demo — not during. Close it once the live URL is confirmed working."
+
+      - name: Issue 2 — Scaffold and Beautify the Home Page
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,7 +67,7 @@ jobs:
           ## Assigned to
           GitHub Coding Agent — assign this issue to Copilot via the Assignees panel on GitHub.com."
 
-      - name: Issue 2 — Agenda Page
+      - name: Issue 3 — Agenda Page
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +83,7 @@ jobs:
           ## Assigned to
           Copilot CLI — use \`gh copilot suggest\` from the terminal to scaffold this page."
 
-      - name: Issue 3 — Labs Page
+      - name: Issue 4 — Labs Page
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,7 +99,7 @@ jobs:
           ## Assigned to
           Agent Mode in IDE (VS Code) — use Copilot Chat in Agent Mode, referencing the existing pages for structure."
 
-      - name: Issue 4 — Code Review and Performance
+      - name: Issue 5 — Code Review and Performance
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -88,13 +114,13 @@ jobs:
           2. **Performance review** using Copilot CLI with Codex — focus on asset optimization, render-blocking resources, caching
 
           The findings from each review should be filed as two new GitHub issues:
-          - **Issue 6**: Code Quality Improvements (from Opus review)
-          - **Issue 7**: Performance Improvements (from Codex review)
+          - **Issue 7**: Code Quality Improvements (from Opus review)
+          - **Issue 8**: Performance Improvements (from Codex review)
 
           ## Assigned to
           Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings."
 
-      - name: Issue 5 — Azure Deployment
+      - name: Issue 6 — Azure Deployment
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -106,16 +132,16 @@ jobs:
           The application is already deployed to Azure Static Web Apps and a CI/CD workflow is in place (\`.github/workflows/azure-static-web-apps.yml\`).
 
           For this final step:
-          1. Confirm all previous issues (1, 2, 3, 4, 6, 7) are closed
+          1. Confirm all previous issues (2, 3, 4, 5, 7, 8) are closed
           2. Verify the latest changes are live at the deployed URL
           3. If anything needs to be re-triggered, use Agent Mode to run the workflow
 
-          > ⚠️ **Prerequisite**: This issue must only be started after Issues 1, 2, 3, 4, 6, and 7 are all closed (or explicitly deferred). Deployment is the final gate.
+          > ⚠️ **Prerequisite**: This issue must only be started after Issues 2, 3, 4, 5, 7, and 8 are all closed (or explicitly deferred). Deployment is the final gate.
 
           ## Assigned to
           Agent Mode in IDE (VS Code) — prompt: *'All issues are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed.'*
 
           ## Pre-flight requirement
-          The presenter must have already:
-          - Created an Azure Static Web App connected to this repository
-          - Added \`AZURE_STATIC_WEB_APPS_API_TOKEN\` to the repository secrets"
+          The presenter must have already completed Issue 1 (Azure Static Web App Setup):
+          - Azure Static Web App created and connected to this repository
+          - \`AZURE_STATIC_WEB_APPS_API_TOKEN\` added to the repository secrets"

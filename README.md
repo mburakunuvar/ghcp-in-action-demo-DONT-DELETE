@@ -33,24 +33,33 @@ By the end of the demo, a small web app has been:
 
 Before running this demo, make sure the following are in place:
 
-- A GitHub repository with at least **5 open issues** (Issues 1–5 as described below)
+- A GitHub repository with **6 open issues** (auto-created on first push by the setup workflow)
+- **Issue 1 completed and closed** — Azure Static Web App created, `AZURE_STATIC_WEB_APPS_API_TOKEN` added to repo secrets, and the live URL verified
 - **GitHub Copilot** enabled on the account and the repository
 - **VS Code** with the repo cloned locally and Agent Mode enabled
 - **Copilot CLI** installed and authenticated — verify with `gh auth status`
-- An **Azure subscription** and deployment target configured (for Issue 5)
+
+> 🎬 **The live demo starts at Issue 2.** Issue 1 is pre-work done before going on stage.
 
 ---
 
 ## Demo Scenarios
 
-### Issue 1 — Scaffold and Beautify the Home Page
+### Issue 1 — Azure Static Web App Setup *(pre-demo)*
+**Tool**: Azure Portal / az CLI &nbsp;|&nbsp; **When**: Before the demo
+
+Done before going on stage. Create an Azure Static Web App, connect it to the repo, add `AZURE_STATIC_WEB_APPS_API_TOKEN` to repo secrets, and verify the live URL. The blank pages deploy automatically on the first push — the URL is live and visible to the audience from the moment the demo begins.
+
+---
+
+### Issue 2 — Scaffold and Beautify the Home Page
 **Tool**: GitHub Coding Agent &nbsp;|&nbsp; **Surface**: GitHub.com
 
 Copilot is assigned the issue directly from the GitHub Issues UI. The blank `index.html` already exists — the agent scaffolds and beautifies it with an event title, a welcome message mentioning Amsterdam, and two navigation buttons linking to `agenda.html` and `labs.html`. The agent opens a draft PR with its changes and comments on its own progress.
 
 ---
 
-### Issue 2 — Agenda Page
+### Issue 3 — Agenda Page
 **Tool**: Copilot CLI &nbsp;|&nbsp; **Surface**: Terminal
 
 From the terminal, Copilot CLI scaffolds a child Agenda page using a natural language prompt. The suggestion is reviewed, executed, and committed — without ever leaving the command line.
@@ -61,14 +70,14 @@ gh copilot suggest "scaffold an Agenda child page based on the structure in inde
 
 ---
 
-### Issue 3 — Labs Page
+### Issue 4 — Labs Page
 **Tool**: Agent Mode &nbsp;|&nbsp; **Surface**: IDE (VS Code)
 
 In VS Code, Agent Mode reads the existing page structure and builds a matching Labs child page. The agent inspects files, proposes edits inline, and can run a local preview to verify the result — all within a single chat conversation.
 
 ---
 
-### Issue 4 — Code Review & Performance
+### Issue 5 — Code Review & Performance
 **Tool**: Copilot CLI &nbsp;|&nbsp; **Surface**: Terminal
 
 Two AI models review the codebase from different angles:
@@ -87,28 +96,26 @@ This closes a real-world loop: *AI reviews code → findings become trackable is
 
 ---
 
-### Issue 6 — Code Quality Improvements *(auto-created)*
-**Created by**: Copilot CLI during Issue 4
+### Issue 7 — Code Quality Improvements *(auto-created)*
+**Created by**: Copilot CLI during Issue 5
 
 Tracks code quality findings surfaced by the Opus review. Addressed or explicitly deferred before deployment.
 
 ---
 
-### Issue 7 — Performance Improvements *(auto-created)*
-**Created by**: Copilot CLI during Issue 4
+### Issue 8 — Performance Improvements *(auto-created)*
+**Created by**: Copilot CLI during Issue 5
 
 Tracks performance findings surfaced by the Codex review. Addressed or explicitly deferred before deployment.
 
 ---
 
-### Issue 5 — Azure Deployment *(final step)*
+### Issue 6 — Azure Deployment *(final step)*
 **Tool**: Agent Mode &nbsp;|&nbsp; **Surface**: IDE (VS Code)
 
-> **⚠️ Prerequisite**: Issues 1–4, 6, and 7 must all be closed (or explicitly deferred) before deployment begins.
+> **⚠️ Prerequisite**: Issues 2, 3, 4, 5, 7, and 8 must all be closed (or explicitly deferred) before deployment begins.
 
-> **🛫 Pre-flight**: Before the demo, create an Azure Static Web App connected to this repo and add `AZURE_STATIC_WEB_APPS_API_TOKEN` to repo secrets. The blank pages deploy on the first push — the live URL is visible from the start.
-
-The app is **already live** from the first push — the blank shell deploys automatically and every merged PR updates it. Issue 5 is the final verification: Agent Mode confirms all issues are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
+The app is **already live** from the first push (Issue 1). Issue 6 is the final verification: Agent Mode confirms all issues are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
 
 ---
 
@@ -116,13 +123,14 @@ The app is **already live** from the first push — the blank shell deploys auto
 
 | Issue | Task | Tool | Surface |
 |---|---|---|---|
-| 1 | Home Page | GitHub Coding Agent | GitHub.com |
-| 2 | Agenda Page | Copilot CLI | Terminal |
-| 3 | Labs Page | Agent Mode | IDE |
-| 4 | Code Review & Performance | Copilot CLI | Terminal |
-| 6 *(auto-created)* | Code Quality Improvements | Copilot CLI | Terminal |
-| 7 *(auto-created)* | Performance Improvements | Copilot CLI | Terminal |
-| 5 *(final)* | Azure Deployment | Agent Mode | IDE |
+| 1 *(pre-demo)* | Azure Static Web App Setup | Azure Portal / az CLI | — |
+| 2 | Scaffold & Beautify Home Page | GitHub Coding Agent | GitHub.com |
+| 3 | Agenda Page | Copilot CLI | Terminal |
+| 4 | Labs Page | Agent Mode | IDE |
+| 5 | Code Review & Performance | Copilot CLI | Terminal |
+| 7 *(auto-created)* | Code Quality Improvements | Copilot CLI | Terminal |
+| 8 *(auto-created)* | Performance Improvements | Copilot CLI | Terminal |
+| 6 *(final)* | Azure Deployment (verify) | Agent Mode | IDE |
 
 ---
 
