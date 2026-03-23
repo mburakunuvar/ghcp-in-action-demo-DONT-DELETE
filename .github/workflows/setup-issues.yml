@@ -27,7 +27,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Azure Static Web App Setup" \
+            --title "0 - Azure Static Web App Setup (Pre-demo)" \
             --body "## Task
           Set up the Azure Static Web App before the live demo begins. This gets the blank pages deployed to Azure so the live URL is accessible from the start of the demo.
 
@@ -53,7 +53,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Scaffold and Beautify the Home Page" \
+            --title "1 - Scaffold and Beautify the Home Page" \
             --body "## Task
           Scaffold and beautify the existing \`index.html\` with:
           - Event title
@@ -74,7 +74,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Agenda Page" \
+            --title "2 - Agenda Page" \
             --body "## Task
           Build a child page for the Agenda.
 
@@ -90,7 +90,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Labs Page" \
+            --title "3 - Labs Page" \
             --body "## Task
           Build a child page for Labs.
 
@@ -106,7 +106,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Code Review and Performance" \
+            --title "4 - Code Review and Performance" \
             --body "## Task
           Perform a code review of the full application:
 
@@ -127,7 +127,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Azure Deployment" \
+            --title "5 - Azure Deployment" \
             --body "## Task
           The application is already deployed to Azure Static Web Apps and a CI/CD workflow is in place (\`.github/workflows/azure-static-web-apps.yml\`).
 

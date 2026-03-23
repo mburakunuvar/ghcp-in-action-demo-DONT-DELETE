@@ -1,7 +1,7 @@
 ---
 name: "Issue 6 — Azure Deployment"
 about: "Verify and trigger final deployment (final step)"
-title: "Azure Deployment"
+title: "5 - Azure Deployment"
 labels: ""
 ---
 

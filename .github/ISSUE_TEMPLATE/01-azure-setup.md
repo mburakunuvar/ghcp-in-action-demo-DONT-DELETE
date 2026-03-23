@@ -1,7 +1,7 @@
 ---
 name: "Issue 1 — Azure Static Web App Setup"
 about: "Pre-demo setup: deploy blank pages to Azure Static Web Apps"
-title: "Azure Static Web App Setup"
+title: "0 - Azure Static Web App Setup (Pre-demo)"
 labels: ""
 ---
 

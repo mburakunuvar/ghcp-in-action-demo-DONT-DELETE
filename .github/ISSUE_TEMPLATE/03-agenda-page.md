@@ -1,7 +1,7 @@
 ---
 name: "Issue 3 — Agenda Page"
 about: "Build the Agenda child page"
-title: "Agenda Page"
+title: "2 - Agenda Page"
 labels: ""
 ---
 

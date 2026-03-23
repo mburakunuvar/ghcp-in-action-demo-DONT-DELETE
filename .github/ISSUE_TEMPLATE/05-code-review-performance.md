@@ -1,7 +1,7 @@
 ---
 name: "Issue 5 — Code Review and Performance"
 about: "AI-powered code review using two models; findings become new issues"
-title: "Code Review and Performance"
+title: "4 - Code Review and Performance"
 labels: ""
 ---
 

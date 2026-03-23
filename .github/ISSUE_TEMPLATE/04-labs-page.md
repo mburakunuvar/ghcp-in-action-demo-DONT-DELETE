@@ -1,7 +1,7 @@
 ---
 name: "Issue 4 — Labs Page"
 about: "Build the Labs child page"
-title: "Labs Page"
+title: "3 - Labs Page"
 labels: ""
 ---
 
