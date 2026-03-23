@@ -20,21 +20,23 @@ jobs:
           COUNT=$(gh issue list --repo ${{ github.repository }} --json number --jq 'length')
           echo "issue_count=$COUNT" >> $GITHUB_OUTPUT
 
-      - name: Issue 1 — Home Page
+      - name: Issue 1 — Scaffold and Beautify the Home Page
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --title "Home Page" \
+            --title "Scaffold and Beautify the Home Page" \
             --body "## Task
-          Build a simple front-end home page with:
+          Scaffold and beautify the existing \`index.html\` with:
           - Event title
           - Warm welcome message mentioning Amsterdam
-          - Two navigation buttons:
-            - **Agenda**
-            - **Labs**
+          - Two navigation buttons that link to the child pages:
+            - **Agenda** → \`agenda.html\`
+            - **Labs** → \`labs.html\`
+
+          The blank HTML files (\`index.html\`, \`agenda.html\`, \`labs.html\`) already exist in the repo — no need to create the folder structure.
 
           ## Assigned to
           GitHub Coding Agent — assign this issue to Copilot via the Assignees panel on GitHub.com."

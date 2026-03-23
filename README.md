@@ -43,10 +43,10 @@ Before running this demo, make sure the following are in place:
 
 ## Demo Scenarios
 
-### Issue 1 — Home Page
+### Issue 1 — Scaffold and Beautify the Home Page
 **Tool**: GitHub Coding Agent &nbsp;|&nbsp; **Surface**: GitHub.com
 
-Copilot is assigned the issue directly from the GitHub Issues UI. It autonomously plans and implements a simple front-end home page featuring an event title, a welcome message mentioning Amsterdam, and two navigation buttons (Agenda and Labs). The agent opens a draft PR with its changes and comments on its own progress.
+Copilot is assigned the issue directly from the GitHub Issues UI. The blank `index.html` already exists — the agent scaffolds and beautifies it with an event title, a welcome message mentioning Amsterdam, and two navigation buttons linking to `agenda.html` and `labs.html`. The agent opens a draft PR with its changes and comments on its own progress.
 
 ---
 
