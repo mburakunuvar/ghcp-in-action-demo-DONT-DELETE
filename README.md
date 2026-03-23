@@ -106,7 +106,9 @@ Tracks performance findings surfaced by the Codex review. Addressed or explicitl
 
 > **⚠️ Prerequisite**: Issues 1–4, 6, and 7 must all be closed (or explicitly deferred) before deployment begins.
 
-With all issues resolved, Agent Mode is prompted to deploy the application to Azure. The agent inspects the repo for existing CI/CD configuration, generates or updates a GitHub Actions workflow, and triggers the deployment. The live app is verified at the deployed URL.
+> **🛫 Pre-flight**: Before the demo, create an Azure Static Web App connected to this repo and add `AZURE_STATIC_WEB_APPS_API_TOKEN` to repo secrets. The blank pages deploy on the first push — the live URL is visible from the start.
+
+The app is **already live** from the first push — the blank shell deploys automatically and every merged PR updates it. Issue 5 is the final verification: Agent Mode confirms all issues are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
 
 ---
 
