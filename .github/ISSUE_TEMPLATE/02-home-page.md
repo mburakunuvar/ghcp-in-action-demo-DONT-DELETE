@@ -1,8 +1,8 @@
 ---
 name: "Issue 2 — Scaffold and Beautify the Home Page"
 about: "Scaffold and beautify index.html with links to the child pages"
-title: "1 - Scaffold and Beautify the Home Page"
-labels: ""
+title: "Scaffold and Beautify the Home Page"
+labels: "coding-agent"
 ---
 
 ## Task

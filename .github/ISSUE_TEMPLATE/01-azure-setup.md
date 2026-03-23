@@ -1,8 +1,8 @@
 ---
 name: "Issue 1 — Azure Static Web App Setup"
 about: "Pre-demo setup: deploy blank pages to Azure Static Web Apps"
-title: "0 - Azure Static Web App Setup (Pre-demo)"
-labels: ""
+title: "Azure Static Web App Setup (Pre-demo)"
+labels: "pre-demo"
 ---
 
 ## Task
@@ -18,7 +18,7 @@ Set up the Azure Static Web App before the live demo begins. This gets the blank
 7. Go to the **Actions** tab in this repository, select the **Azure Static Web Apps CI/CD** workflow, and click **Run workflow** to manually trigger the deployment
 8. Verify the live URL is accessible before going on stage
 
-> ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue 2**.
+> ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue #2**.
 
 ## Note
 This issue is done **before** the live demo — not during. Close it once the live URL is confirmed working.

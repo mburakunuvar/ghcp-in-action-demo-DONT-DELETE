@@ -1,8 +1,7 @@
 name: Setup Demo Issues
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   create-issues:
@@ -27,6 +26,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "pre-demo" \
             --title "Azure Static Web App Setup (Pre-demo)" \
             --body "## Task
           Set up the Azure Static Web App before the live demo begins. This gets the blank pages deployed to Azure so the live URL is accessible from the start of the demo.
@@ -41,7 +41,7 @@ jobs:
           7. Go to the **Actions** tab in this repository, select the **Azure Static Web Apps CI/CD** workflow, and click **Run workflow** to manually trigger the deployment
           8. Verify the live URL is accessible before going on stage
 
-          > ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue 2**.
+          > ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue #2**.
 
           ## Note
           This issue is done **before** the live demo — not during. Close it once the live URL is confirmed working."
@@ -53,6 +53,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "coding-agent" \
             --title "Scaffold and Beautify the Home Page" \
             --body "## Task
           Scaffold and beautify the existing \`index.html\` with:
@@ -74,20 +75,22 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "copilot-cli" \
             --title "Agenda Page" \
             --body "## Task
           Build a child page for the Agenda.
 
           The page should follow the same structure and style as the home page (\`index.html\`).
+          Use \`agenda-template.txt\` in the repo root for the agenda content.
 
           ## Assigned to
           Copilot CLI — use \`gh copilot suggest\` from the terminal to scaffold this page.
 
           ## Completion
-          Once the page is built and saved, run the following command to close this issue:
+          Once the page is built and committed, close this issue:
 
           \`\`\`bash
-          gh issue close 2 --repo ${{ github.repository }}
+          gh issue close 3 --repo ${{ github.repository }}
           \`\`\`"
 
       - name: Issue 4 — Labs Page
@@ -97,20 +100,22 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "agent-mode" \
             --title "Labs Page" \
             --body "## Task
           Build a child page for Labs.
 
           The page should follow the same structure and style as the home page and Agenda page.
+          Use \`labs-template.txt\` in the repo root for the labs content.
 
           ## Assigned to
           Agent Mode in IDE (VS Code) — use Copilot Chat in Agent Mode, referencing the existing pages for structure.
 
           ## Completion
-          When the Labs page is complete, close this issue by running:
+          When the Labs page is complete, close this issue:
 
           \`\`\`bash
-          gh issue close 3 --repo ${{ github.repository }}
+          gh issue close 4 --repo ${{ github.repository }}
           \`\`\`
 
           > Agent Mode: please run this command automatically once the page is built and verified."
@@ -122,6 +127,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "copilot-cli" \
             --title "Code Review and Performance" \
             --body "## Task
           Perform a code review of the full application:
@@ -130,34 +136,20 @@ jobs:
           2. **Performance review** using Copilot CLI with Codex — focus on asset optimization, render-blocking resources, caching
 
           The findings from each review should be filed as two new GitHub issues:
-          - **Issue 7**: Code Quality Improvements (from Opus review)
-          - **Issue 8**: Performance Improvements (from Codex review)
+          - **Code Quality Improvements** (from Opus review)
+          - **Performance Improvements** (from Codex review)
 
           ## Assigned to
           Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings.
 
           ## Important: Issue body format
-          When creating Issues 7 and 8, include a \`## Completion\` section at the end of each issue body so Copilot CLI knows to close the issue when done:
-
-          For Issue 7:
-          \`\`\`
-          ## Completion
-          Once all code quality improvements are applied, close this issue:
-          gh issue close 7 --repo ${{ github.repository }}
-          \`\`\`
-
-          For Issue 8:
-          \`\`\`
-          ## Completion
-          Once all performance improvements are applied, close this issue:
-          gh issue close 8 --repo ${{ github.repository }}
-          \`\`\`
+          When creating the Code Quality and Performance issues, include a \`## Completion\` section at the end of each issue body with a \`gh issue close <NUMBER>\` command (using the issue number returned by \`gh issue create\`) so Copilot CLI knows to close the issue when done.
 
           ## Completion
-          Once Issues 7 and 8 are created and filed, close this issue:
+          Once the Code Quality and Performance issues are created and filed, close this issue:
 
           \`\`\`bash
-          gh issue close 4 --repo ${{ github.repository }}
+          gh issue close 5 --repo ${{ github.repository }}
           \`\`\`"
 
       - name: Issue 6 — Azure Deployment
@@ -167,24 +159,32 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "agent-mode" \
             --title "Azure Deployment" \
             --body "## Task
           The application is already deployed to Azure Static Web Apps and a CI/CD workflow is in place (\`.github/workflows/azure-static-web-apps.yml\`).
 
           For this final step:
-          1. Confirm all previous issues (2, 3, 4, 5, 7, 8) are closed
+          1. Confirm all previous issues are closed
           2. Verify the latest changes are live at the deployed URL
           3. If anything needs to be re-triggered, use Agent Mode to run the workflow
 
-          > ⚠️ **Prerequisite**: This issue must only be started after Issues 2, 3, 4, 5, 7, and 8 are all closed (or explicitly deferred). Deployment is the final gate.
+          > ⚠️ **Prerequisite**: All previous issues must be closed (or explicitly deferred) before deployment. Deployment is the final gate.
 
           ## Assigned to
           Agent Mode in IDE (VS Code) — prompt: *'All issues are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed.'*
 
           ## Pre-flight requirement
-          The presenter must have already completed Issue 1 (Azure Static Web App Setup):
+          The presenter must have already completed Issue #1 (Azure Static Web App Setup):
           - Azure Static Web App created and connected to this repository
-          - \`AZURE_STATIC_WEB_APPS_API_TOKEN\` added to the repository secrets"
+          - \`AZURE_STATIC_WEB_APPS_API_TOKEN\` added to the repository secrets
+
+          ## Completion
+          Once deployment is verified and the live site is confirmed working, close this issue:
+
+          \`\`\`bash
+          gh issue close 6 --repo ${{ github.repository }}
+          \`\`\`"
 
       - name: Issue 7 — Clean Up Azure Resources
         if: steps.check.outputs.issue_count == '0'
@@ -193,6 +193,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
+            --label "post-demo" \
             --title "Clean Up Azure Resources" \
             --body "## Task
           After the demo is complete, delete all Azure resources to avoid unnecessary costs.

@@ -96,14 +96,14 @@ This closes a real-world loop: *AI reviews code → findings become trackable is
 
 ---
 
-### Issue 7 — Code Quality Improvements *(auto-created)*
+### Code Quality Improvements *(auto-created)*
 **Created by**: Copilot CLI during Issue 5
 
 Tracks code quality findings surfaced by the Opus review. Addressed or explicitly deferred before deployment.
 
 ---
 
-### Issue 8 — Performance Improvements *(auto-created)*
+### Performance Improvements *(auto-created)*
 **Created by**: Copilot CLI during Issue 5
 
 Tracks performance findings surfaced by the Codex review. Addressed or explicitly deferred before deployment.
@@ -113,7 +113,7 @@ Tracks performance findings surfaced by the Codex review. Addressed or explicitl
 ### Issue 6 — Azure Deployment *(final step)*
 **Tool**: Agent Mode &nbsp;|&nbsp; **Surface**: IDE (VS Code)
 
-> **⚠️ Prerequisite**: Issues 2, 3, 4, 5, 7, and 8 must all be closed (or explicitly deferred) before deployment begins.
+> **⚠️ Prerequisite**: All previous issues must be closed (or explicitly deferred) before deployment begins.
 
 The app is **already live** from the first push (Issue 1). Issue 6 is the final verification: Agent Mode confirms all issues are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
 
@@ -128,8 +128,8 @@ The app is **already live** from the first push (Issue 1). Issue 6 is the final 
 | 3 | Agenda Page | Copilot CLI | Terminal |
 | 4 | Labs Page | Agent Mode | IDE |
 | 5 | Code Review & Performance | Copilot CLI | Terminal |
-| 7 *(auto-created)* | Code Quality Improvements | Copilot CLI | Terminal |
-| 8 *(auto-created)* | Performance Improvements | Copilot CLI | Terminal |
+| *(auto-created)* | Code Quality Improvements | Copilot CLI | Terminal |
+| *(auto-created)* | Performance Improvements | Copilot CLI | Terminal |
 | 6 *(final)* | Azure Deployment (verify) | Agent Mode | IDE |
 
 ---
@@ -138,6 +138,4 @@ The app is **already live** from the first push (Issue 1). Issue 6 is the final 
 
 | File | Description |
 |---|---|
-| `demo-guide.md` | Full presenter guide with step-by-step instructions and talking points |
-| `track-status.md` | Live-updatable checklist to track progress during the demo |
 | `README.md` | This file |
