@@ -145,3 +145,22 @@ jobs:
           The presenter must have already completed Issue 1 (Azure Static Web App Setup):
           - Azure Static Web App created and connected to this repository
           - \`AZURE_STATIC_WEB_APPS_API_TOKEN\` added to the repository secrets"
+
+      - name: Issue 7 — Clean Up Azure Resources
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Clean Up Azure Resources" \
+            --body "## Task
+          After the demo is complete, delete all Azure resources to avoid unnecessary costs.
+
+          ### Steps
+          1. Go to the [Azure Portal](https://portal.azure.com)
+          2. Navigate to the **Resource Group** created for this demo
+          3. Click **Delete resource group** and confirm
+          4. Verify the Static Web App and any associated resources are fully removed
+
+          > ⚠️ Only do this after the demo is fully complete and you no longer need the live URL."
