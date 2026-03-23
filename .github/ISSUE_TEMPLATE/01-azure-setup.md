@@ -15,7 +15,7 @@ Set up the Azure Static Web App before the live demo begins. This gets the blank
 4. Copy the **deployment token** from the Azure Portal
 5. In this repository, go to **Settings → Secrets and variables → Actions**
 6. Add a new secret named `AZURE_STATIC_WEB_APPS_API_TOKEN` and paste the token
-7. The GitHub Actions workflow (`.github/workflows/azure-static-web-apps.yml`) will trigger automatically and deploy the blank pages
+7. Go to the **Actions** tab in this repository, select the **Azure Static Web Apps CI/CD** workflow, and click **Run workflow** to manually trigger the deployment
 8. Verify the live URL is accessible before going on stage
 
 > ✅ Once this issue is complete, the app is live and the live demo can begin at **Issue 2**.
