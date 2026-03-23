@@ -81,7 +81,14 @@ jobs:
           The page should follow the same structure and style as the home page (\`index.html\`).
 
           ## Assigned to
-          Copilot CLI — use \`gh copilot suggest\` from the terminal to scaffold this page."
+          Copilot CLI — use \`gh copilot suggest\` from the terminal to scaffold this page.
+
+          ## Completion
+          Once the page is built and saved, run the following command to close this issue:
+
+          \`\`\`bash
+          gh issue close 2 --repo ${{ github.repository }}
+          \`\`\`"
 
       - name: Issue 4 — Labs Page
         if: steps.check.outputs.issue_count == '0'
@@ -97,7 +104,16 @@ jobs:
           The page should follow the same structure and style as the home page and Agenda page.
 
           ## Assigned to
-          Agent Mode in IDE (VS Code) — use Copilot Chat in Agent Mode, referencing the existing pages for structure."
+          Agent Mode in IDE (VS Code) — use Copilot Chat in Agent Mode, referencing the existing pages for structure.
+
+          ## Completion
+          When the Labs page is complete, close this issue by running:
+
+          \`\`\`bash
+          gh issue close 3 --repo ${{ github.repository }}
+          \`\`\`
+
+          > Agent Mode: please run this command automatically once the page is built and verified."
 
       - name: Issue 5 — Code Review and Performance
         if: steps.check.outputs.issue_count == '0'
