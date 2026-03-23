@@ -134,7 +134,31 @@ jobs:
           - **Issue 8**: Performance Improvements (from Codex review)
 
           ## Assigned to
-          Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings."
+          Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings.
+
+          ## Important: Issue body format
+          When creating Issues 7 and 8, include a \`## Completion\` section at the end of each issue body so Copilot CLI knows to close the issue when done:
+
+          For Issue 7:
+          \`\`\`
+          ## Completion
+          Once all code quality improvements are applied, close this issue:
+          gh issue close 7 --repo ${{ github.repository }}
+          \`\`\`
+
+          For Issue 8:
+          \`\`\`
+          ## Completion
+          Once all performance improvements are applied, close this issue:
+          gh issue close 8 --repo ${{ github.repository }}
+          \`\`\`
+
+          ## Completion
+          Once Issues 7 and 8 are created and filed, close this issue:
+
+          \`\`\`bash
+          gh issue close 4 --repo ${{ github.repository }}
+          \`\`\`"
 
       - name: Issue 6 — Azure Deployment
         if: steps.check.outputs.issue_count == '0'
