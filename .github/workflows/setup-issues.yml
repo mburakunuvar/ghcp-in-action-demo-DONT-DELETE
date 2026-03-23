@@ -1,0 +1,115 @@
+name: Setup Demo Issues
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  create-issues:
+    name: Create demo issues
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Check if issues already exist
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh issue list --repo ${{ github.repository }} --json number --jq 'length')
+          echo "issue_count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Issue 1 — Home Page
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Home Page" \
+            --body "## Task
+          Build a simple front-end home page with:
+          - Event title
+          - Warm welcome message mentioning Amsterdam
+          - Two navigation buttons:
+            - **Agenda**
+            - **Labs**
+
+          ## Assigned to
+          GitHub Coding Agent — assign this issue to Copilot via the Assignees panel on GitHub.com."
+
+      - name: Issue 2 — Agenda Page
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Agenda Page" \
+            --body "## Task
+          Build a child page for the Agenda.
+
+          The page should follow the same structure and style as the home page (\`index.html\`).
+
+          ## Assigned to
+          Copilot CLI — use \`gh copilot suggest\` from the terminal to scaffold this page."
+
+      - name: Issue 3 — Labs Page
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Labs Page" \
+            --body "## Task
+          Build a child page for Labs.
+
+          The page should follow the same structure and style as the home page and Agenda page.
+
+          ## Assigned to
+          Agent Mode in IDE (VS Code) — use Copilot Chat in Agent Mode, referencing the existing pages for structure."
+
+      - name: Issue 4 — Code Review and Performance
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Code Review and Performance" \
+            --body "## Task
+          Perform a code review of the full application:
+
+          1. **Code quality review** using Copilot CLI with Opus — focus on best practices, error handling, accessibility
+          2. **Performance review** using Copilot CLI with Codex — focus on asset optimization, render-blocking resources, caching
+
+          The findings from each review should be filed as two new GitHub issues:
+          - **Issue 6**: Code Quality Improvements (from Opus review)
+          - **Issue 7**: Performance Improvements (from Codex review)
+
+          ## Assigned to
+          Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings."
+
+      - name: Issue 5 — Azure Deployment
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --title "Azure Deployment" \
+            --body "## Task
+          Deploy the application to Azure.
+
+          > ⚠️ **Prerequisite**: This issue must only be started after Issues 1, 2, 3, 4, 6, and 7 are all closed (or explicitly deferred). Deployment is the final gate.
+
+          ### Steps
+          1. Check for an existing GitHub Actions workflow for Azure deployment
+          2. If none exists, create one
+          3. Trigger the deployment
+          4. Verify the app is live at the deployed URL
+
+          ## Assigned to
+          Agent Mode in IDE (VS Code) — prompt: *'All issues are resolved. Deploy this application to Azure. Check if there is an existing workflow file, and if not, create one and trigger the deployment.'*"
