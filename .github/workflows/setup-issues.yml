@@ -11,6 +11,16 @@ jobs:
       issues: write
 
     steps:
+      - name: Create labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "pre-demo"     --repo ${{ github.repository }} --color "D93F0B" --description "Pre-demo setup tasks"            --force
+          gh label create "coding-agent" --repo ${{ github.repository }} --color "0E8A16" --description "Assigned to GitHub Coding Agent"  --force
+          gh label create "copilot-cli"  --repo ${{ github.repository }} --color "1D76DB" --description "Assigned to Copilot CLI"          --force
+          gh label create "agent-mode"   --repo ${{ github.repository }} --color "5319E7" --description "Assigned to Agent Mode in IDE"    --force
+          gh label create "post-demo"    --repo ${{ github.repository }} --color "FBCA04" --description "Post-demo cleanup tasks"          --force
+
       - name: Check if issues already exist
         id: check
         env:
