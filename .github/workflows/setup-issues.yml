@@ -1,12 +1,17 @@
 name: Setup Demo Issues
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   create-issues:
     name: Create demo issues
     runs-on: ubuntu-latest
+    # On push: only run on the very first commit (repo created from template).
+    # On workflow_dispatch: always run (manual fallback).
+    if: github.event_name == 'workflow_dispatch' || github.event.before == '0000000000000000000000000000000000000000'
     permissions:
       issues: write
 
