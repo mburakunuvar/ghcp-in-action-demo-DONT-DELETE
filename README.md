@@ -1,6 +1,6 @@
 # ghcp-in-action
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mburakunuvar/ghcp-in-action-demo/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mburakunuvar/ghcp-in-action-demo-DONT-DELETE/generate)
 
 > Click **"Use this template"** above to create your own copy of this repo and follow along with the demo.
 
