@@ -15,8 +15,8 @@ Use `template-agenda.txt` in the repo root for the agenda content.
 Copilot CLI — use `gh copilot suggest` from the terminal to scaffold this page.
 
 ## Completion
-Once the page is built and committed, close this issue:
-
-```bash
-gh issue close 3 --repo <owner/repo>
-```
+Once the page is built:
+1. Commit the changes
+2. Pull and rebase from remote: `git pull --rebase origin main`
+3. Push to remote: `git push origin main`
+4. Close this issue: `gh issue close 3`
