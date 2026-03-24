@@ -135,39 +135,7 @@ jobs:
 
           > Agent Mode: please run this command automatically once the page is built and verified."
 
-      - name: Issue 5 — Code Review and Performance
-        if: steps.check.outputs.issue_count == '0'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh issue create \
-            --repo ${{ github.repository }} \
-            --label "copilot-cli" \
-            --title "Code Review and Performance" \
-            --body "## Task
-          Perform a code review of the full application:
-
-          1. **Code quality review** using Copilot CLI with Opus — focus on best practices, error handling, accessibility
-          2. **Performance review** using Copilot CLI with Codex — focus on asset optimization, render-blocking resources, caching
-
-          The findings from each review should be filed as two new GitHub issues:
-          - **Code Quality Improvements** (from Opus review)
-          - **Performance Improvements** (from Codex review)
-
-          ## Assigned to
-          Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings.
-
-          ## Important: Issue body format
-          When creating the Code Quality and Performance issues, include a \`## Completion\` section at the end of each issue body with a \`gh issue close <NUMBER>\` command (using the issue number returned by \`gh issue create\`) so Copilot CLI knows to close the issue when done.
-
-          ## Completion
-          Once the Code Quality and Performance issues are created and filed, close this issue:
-
-          \`\`\`bash
-          gh issue close 5 --repo ${{ github.repository }}
-          \`\`\`"
-
-      - name: Issue 6 — Azure Deployment
+      - name: Issue 5 — Azure Deployment
         if: steps.check.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -179,15 +147,15 @@ jobs:
             --body "## Task
           The application is already deployed to Azure Static Web Apps and a CI/CD workflow is in place (\`.github/workflows/azure-static-web-apps.yml\`).
 
-          For this final step:
-          1. Confirm all previous issues are closed
+          For this step:
+          1. Confirm Issues #2 (Home Page), #3 (Agenda Page), and #4 (Labs Page) are closed
           2. Verify the latest changes are live at the deployed URL
           3. If anything needs to be re-triggered, use Agent Mode to run the workflow
 
-          > ⚠️ **Prerequisite**: All previous issues must be closed (or explicitly deferred) before deployment. Deployment is the final gate.
+          > ⚠️ **Prerequisite**: Issues #2, #3, and #4 must be closed before deployment. Code Review and Performance (Issue #6) happens after this step.
 
           ## Assigned to
-          Agent Mode in IDE (VS Code) — prompt: *'All issues are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed.'*
+          Agent Mode in IDE (VS Code) — prompt: *'Issues 2, 3, and 4 are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed.'*
 
           ## Pre-flight requirement
           The presenter must have already completed Issue #1 (Azure Static Web App Setup):
@@ -196,6 +164,38 @@ jobs:
 
           ## Completion
           Once deployment is verified and the live site is confirmed working, close this issue:
+
+          \`\`\`bash
+          gh issue close 5 --repo ${{ github.repository }}
+          \`\`\`"
+
+      - name: Issue 6 — Code Review and Performance
+        if: steps.check.outputs.issue_count == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo ${{ github.repository }} \
+            --label "copilot-cli" \
+            --title "Code Review and Performance" \
+            --body "## Task
+          Perform a code review of the full application (targeting the live deployed app):
+
+          1. **Code quality review** using Copilot CLI with Opus — focus on best practices, error handling, accessibility
+          2. **Performance review** using Copilot CLI with Codex — focus on asset optimization, render-blocking resources, caching
+
+          The findings from each review should be filed as two new GitHub issues using pre-written commands (no copy-pasting needed):
+          - Fix: missing alt attributes and semantic HTML
+          - Fix: render-blocking CSS and missing meta tags
+
+          ## Assigned to
+          Copilot CLI — use \`gh copilot suggest\` for both reviews, then \`gh issue create\` to file the findings.
+
+          ## Note
+          This step happens after Azure Deployment (#5). The reviews target the live deployed app.
+
+          ## Completion
+          Once the findings issues are created and filed, close this issue:
 
           \`\`\`bash
           gh issue close 6 --repo ${{ github.repository }}

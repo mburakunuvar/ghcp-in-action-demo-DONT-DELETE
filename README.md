@@ -77,10 +77,19 @@ In VS Code, Agent Mode reads the existing page structure and builds a matching L
 
 ---
 
-### Issue 5 — Code Review & Performance
+### Issue 5 — Azure Deployment
+**Tool**: Agent Mode &nbsp;|&nbsp; **Surface**: IDE (VS Code)
+
+> **⚠️ Prerequisite**: Issues #2 (Home Page), #3 (Agenda Page), and #4 (Labs Page) must be closed before deployment. Code Review happens after this step.
+
+The app is **already live** from the first push (Issue 1). Issue 5 is the deployment verification: Agent Mode confirms Issues 2–4 are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
+
+---
+
+### Issue 6 — Code Review & Performance
 **Tool**: Copilot CLI &nbsp;|&nbsp; **Surface**: Terminal
 
-Two AI models review the codebase from different angles:
+Two AI models review the live deployed app from different angles:
 
 - **Opus** performs a code quality review (best practices, error handling, accessibility)
 - **Codex** performs a performance review (asset optimization, render-blocking resources, caching)
@@ -94,30 +103,21 @@ gh issue create --title "Fix: render-blocking CSS and missing meta tags" --body 
 
 These two issues are then addressed using **`/fleet`** in Copilot CLI, which hands them off to the GitHub Coding Agent directly from the terminal.
 
-This closes a real-world loop: *AI reviews code → findings become trackable issues → issues are handed off back to Copilot to fix.*
+This closes a real-world loop: *AI reviews the live app → findings become trackable issues → issues are handed off to Copilot to fix.*
 
 ---
 
 ### Fix: missing alt attributes and semantic HTML *(auto-created)*
-**Created by**: Copilot CLI during Issue 5 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
+**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
 
-Tracks code quality findings surfaced by the Opus review. handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
+Tracks code quality findings surfaced by the Opus review. Handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
 
 ---
 
 ### Fix: render-blocking CSS and missing meta tags *(auto-created)*
-**Created by**: Copilot CLI during Issue 5 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
+**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
 
-Tracks performance findings surfaced by the Codex review. handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
-
----
-
-### Issue 6 — Azure Deployment *(final step)*
-**Tool**: Agent Mode &nbsp;|&nbsp; **Surface**: IDE (VS Code)
-
-> **⚠️ Prerequisite**: All previous issues must be closed (or explicitly deferred) before deployment begins.
-
-The app is **already live** from the first push (Issue 1). Issue 6 is the final verification: Agent Mode confirms all issues are closed, checks the existing `.github/workflows/azure-static-web-apps.yml` workflow, triggers a final deployment if needed, and the audience sees the fully built app at the live URL.
+Tracks performance findings surfaced by the Codex review. Handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
 
 ---
 
@@ -129,10 +129,10 @@ The app is **already live** from the first push (Issue 1). Issue 6 is the final 
 | 2 | Scaffold & Beautify Home Page | GitHub Coding Agent | GitHub.com |
 | 3 | Agenda Page | Copilot CLI | Terminal |
 | 4 | Labs Page | Agent Mode | IDE |
-| 5 | Code Review & Performance | Copilot CLI | Terminal |
-| *(auto-created)* | Code Quality Improvements | Copilot CLI | Terminal |
-| *(auto-created)* | Performance Improvements | Copilot CLI | Terminal |
-| 6 *(final)* | Azure Deployment (verify) | Agent Mode | IDE |
+| 5 | Azure Deployment | Agent Mode | IDE |
+| 6 | Code Review & Performance | Copilot CLI | Terminal |
+| *(auto-created)* | Fix: missing alt attributes and semantic HTML | GitHub Coding Agent (via `/fleet`) | Terminal |
+| *(auto-created)* | Fix: render-blocking CSS and missing meta tags | GitHub Coding Agent (via `/fleet`) | Terminal |
 
 ---
 
