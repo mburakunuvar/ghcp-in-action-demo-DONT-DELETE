@@ -9,7 +9,7 @@ labels: "copilot-cli"
 Build a child page for the Agenda.
 
 The page should follow the same structure and style as the home page (`index.html`).
-Use `agenda-template.txt` in the repo root for the agenda content.
+Use `template-agenda.txt` in the repo root for the agenda content.
 
 ## Assigned to
 Copilot CLI — use `gh copilot suggest` from the terminal to scaffold this page.

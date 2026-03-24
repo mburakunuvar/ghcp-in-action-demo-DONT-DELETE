@@ -33,7 +33,7 @@ By the end of the demo, a small web app has been:
 
 Before running this demo, make sure the following are in place:
 
-- A GitHub repository with **6 open issues** (auto-created on first push by the setup workflow)
+- A GitHub repository with **7 issues** (auto-created on first push by the setup workflow; 6 remain open after closing Issue 1)
 - **Issue 1 completed and closed** — Azure Static Web App created, `AZURE_STATIC_WEB_APPS_API_TOKEN` added to repo secrets, and the live URL verified
 - **GitHub Copilot** enabled on the account and the repository
 - **VS Code** with the repo cloned locally and Agent Mode enabled
@@ -141,3 +141,11 @@ Tracks performance findings surfaced by the Codex review. Handed off to the GitH
 | File | Description |
 |---|---|
 | `README.md` | This file |
+| `index.html` | Blank home page scaffold |
+| `agenda.html` | Blank agenda page scaffold |
+| `labs.html` | Blank labs page scaffold |
+| `template-agenda.txt` | Agenda content template (referenced by Issue #3) |
+| `template-labs.txt` | Labs content template (referenced by Issue #4) |
+| `template-azureapp.md` | Reusable runbook for Azure Static Web App setup (Issue #1) |
+| `.github/workflows/setup-issues.yml` | Auto-creates issues and labels on first push |
+| `.github/workflows/azure-static-web-apps.yml` | Manual-trigger deployment to Azure Static Web Apps |

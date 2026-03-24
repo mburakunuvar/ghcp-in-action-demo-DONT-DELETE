@@ -1,6 +1,6 @@
 ---
-name: "Issue 6 — Azure Deployment"
-about: "Verify and trigger final deployment (final step)"
+name: "Issue 5 — Azure Deployment"
+about: "Verify and trigger deployment after home, agenda & labs are done"
 title: "Azure Deployment"
 labels: "agent-mode"
 ---
@@ -8,15 +8,15 @@ labels: "agent-mode"
 ## Task
 The application is already deployed to Azure Static Web Apps and a CI/CD workflow is in place (`.github/workflows/azure-static-web-apps.yml`).
 
-For this final step:
-1. Confirm all previous issues are closed
+For this step:
+1. Confirm Issues #2 (Home Page), #3 (Agenda Page), and #4 (Labs Page) are closed
 2. Verify the latest changes are live at the deployed URL
 3. If anything needs to be re-triggered, use Agent Mode to run the workflow
 
-> ⚠️ **Prerequisite**: All previous issues must be closed (or explicitly deferred) before deployment. Deployment is the final gate.
+> ⚠️ **Prerequisite**: Issues #2, #3, and #4 must be closed before deployment. Code Review and Performance (Issue #6) happens after this step.
 
 ## Assigned to
-Agent Mode in IDE (VS Code) — prompt: *"All issues are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed."*
+Agent Mode in IDE (VS Code) — prompt: *"Issues 2, 3, and 4 are resolved. Verify the app is deployed and the live site reflects all the latest changes. Trigger a re-deployment if needed."*
 
 ## Pre-flight requirement
 The presenter must have already completed Issue #1 (Azure Static Web App Setup) before the demo:
@@ -27,5 +27,5 @@ The presenter must have already completed Issue #1 (Azure Static Web App Setup) 
 Once deployment is verified and the live site is confirmed working, close this issue:
 
 ```bash
-gh issue close 6 --repo <owner/repo>
+gh issue close 5 --repo <owner/repo>
 ```
