@@ -85,28 +85,30 @@ Two AI models review the codebase from different angles:
 - **Opus** performs a code quality review (best practices, error handling, accessibility)
 - **Codex** performs a performance review (asset optimization, render-blocking resources, caching)
 
-The findings from each review are used to automatically file two new GitHub issues:
+The findings from each review are filed as two new GitHub issues with short, pre-written bodies — ready to run as-is, no copy-pasting on stage:
 
 ```sh
-gh issue create --title "Code Quality Improvements" --body "..."
-gh issue create --title "Performance Improvements" --body "..."
+gh issue create --title "Fix: missing alt attributes and semantic HTML" --body "Flagged by Copilot code review (Opus): ..."
+gh issue create --title "Fix: render-blocking CSS and missing meta tags" --body "Flagged by Copilot performance review (Codex): ..."
 ```
 
-This closes a real-world loop: *AI reviews code → findings become trackable issues → issues can be assigned back to Copilot to fix.*
+These two issues are then addressed using **`/fleet`** in Copilot CLI, which hands them off to the GitHub Coding Agent directly from the terminal.
+
+This closes a real-world loop: *AI reviews code → findings become trackable issues → issues are handed off back to Copilot to fix.*
 
 ---
 
-### Code Quality Improvements *(auto-created)*
-**Created by**: Copilot CLI during Issue 5
+### Fix: missing alt attributes and semantic HTML *(auto-created)*
+**Created by**: Copilot CLI during Issue 5 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
 
-Tracks code quality findings surfaced by the Opus review. Addressed or explicitly deferred before deployment.
+Tracks code quality findings surfaced by the Opus review. handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
 
 ---
 
-### Performance Improvements *(auto-created)*
-**Created by**: Copilot CLI during Issue 5
+### Fix: render-blocking CSS and missing meta tags *(auto-created)*
+**Created by**: Copilot CLI during Issue 5 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
 
-Tracks performance findings surfaced by the Codex review. Addressed or explicitly deferred before deployment.
+Tracks performance findings surfaced by the Codex review. handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
 
 ---
 

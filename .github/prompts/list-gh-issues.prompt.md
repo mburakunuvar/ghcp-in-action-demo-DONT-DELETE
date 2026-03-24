@@ -2,7 +2,6 @@
 agent: 'agent'
 description: 'List GitHub issues for this repository with optional filters'
 argument-hint: 'Optional: state (open/closed/all), label, or assignee'
-tools: ['runInTerminal']
 ---
 
 List the GitHub issues for the current repository using the `gh` CLI.
