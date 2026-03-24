@@ -1,4 +1,5 @@
 
+GHCP HANDS-ON WORKSHOP AMSTERDAM LAB SESSIONS
 
 entry level labs -suggested path for all  👨‍💻 
 Getting Started with GHCP https://github.com/mburakunuvar/ghcp-lab01-getting-started 

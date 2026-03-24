@@ -1,4 +1,5 @@
 
+GHCP HANDS-ON WORKSHOP AMSTERDAM AGENDA
 Time	Content		
 09:30 – 10:00	Coffee & Introductions		
 10:00 – 10:45	GitHub Copilot Fundamentals & Capabilities		
