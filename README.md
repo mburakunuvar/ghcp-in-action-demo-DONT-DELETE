@@ -89,35 +89,46 @@ The app is **already live** from the first push (Issue 1). Issue 5 is the deploy
 ### Issue 6 — Code Review & Performance
 **Tool**: Copilot CLI &nbsp;|&nbsp; **Surface**: Terminal
 
-Two AI models review the live deployed app from different angles:
+Copilot CLI reviews the live deployed app for code quality and performance:
 
-- **Opus** performs a code quality review (best practices, error handling, accessibility)
-- **Codex** performs a performance review (asset optimization, render-blocking resources, caching)
+1. **Code quality review** — best practices, error handling, accessibility
+2. **Performance review** — asset optimization, render-blocking resources, caching
 
-The findings from each review are filed as two new GitHub issues with short, pre-written bodies — ready to run as-is, no copy-pasting on stage:
+The findings are filed as four new GitHub issues using `gh issue create`:
+- Fix: missing alt attributes and semantic HTML
+- Fix: render-blocking CSS and missing meta tags
+- Write and run unit tests for the application
+- Deploy latest version to Azure
 
-```sh
-gh issue create --title "Fix: missing alt attributes and semantic HTML" --body "Flagged by Copilot code review (Opus): ..."
-gh issue create --title "Fix: render-blocking CSS and missing meta tags" --body "Flagged by Copilot performance review (Codex): ..."
-```
-
-These two issues are then addressed using **`/fleet`** in Copilot CLI, which hands them off to the GitHub Coding Agent directly from the terminal.
-
-This closes a real-world loop: *AI reviews the live app → findings become trackable issues → issues are handed off to Copilot to fix.*
+After filing the issues, Copilot CLI generates a `suggested_improvements.md` report in the repo root summarizing all findings and recommendations.
 
 ---
 
 ### Fix: missing alt attributes and semantic HTML *(auto-created)*
-**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
+**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: GitHub Coding Agent
 
-Tracks code quality findings surfaced by the Opus review. Handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
+Tracks code quality findings surfaced by the review.
 
 ---
 
 ### Fix: render-blocking CSS and missing meta tags *(auto-created)*
-**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: `/fleet` in Copilot CLI
+**Created by**: Copilot CLI during Issue 6 &nbsp;|&nbsp; **Addressed by**: GitHub Coding Agent
 
-Tracks performance findings surfaced by the Codex review. Handed off to the GitHub Coding Agent via `/fleet` for a quick fix.
+Tracks performance findings surfaced by the review.
+
+---
+
+### Write and run unit tests *(auto-created)*
+**Created by**: Copilot CLI during Issue 6
+
+Write and execute unit tests for the application.
+
+---
+
+### Deploy latest version to Azure *(auto-created)*
+**Created by**: Copilot CLI during Issue 6
+
+Trigger the existing Azure Static Web Apps workflow to deploy the updated application.
 
 ---
 
@@ -131,8 +142,10 @@ Tracks performance findings surfaced by the Codex review. Handed off to the GitH
 | 4 | Labs Page | Agent Mode | IDE |
 | 5 | Azure Deployment | Agent Mode | IDE |
 | 6 | Code Review & Performance | Copilot CLI | Terminal |
-| *(auto-created)* | Fix: missing alt attributes and semantic HTML | GitHub Coding Agent (via `/fleet`) | Terminal |
-| *(auto-created)* | Fix: render-blocking CSS and missing meta tags | GitHub Coding Agent (via `/fleet`) | Terminal |
+| *(auto-created)* | Fix: missing alt attributes and semantic HTML | GitHub Coding Agent | GitHub.com |
+| *(auto-created)* | Fix: render-blocking CSS and missing meta tags | GitHub Coding Agent | GitHub.com |
+| *(auto-created)* | Write and run unit tests | — | — |
+| *(auto-created)* | Deploy latest version to Azure | — | — |
 
 ---
 
