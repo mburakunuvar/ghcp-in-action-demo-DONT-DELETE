@@ -7,7 +7,7 @@ labels: "coding-agent"
 
 ## Task
 Scaffold and beautify the existing `index.html` with:
-- Event title
+- Event title: **GHCP WORKSHOP AMSTERDAM**
 - Warm welcome message mentioning Amsterdam
 - Two navigation buttons that link to the child pages:
   - **Agenda** → `agenda.html`
