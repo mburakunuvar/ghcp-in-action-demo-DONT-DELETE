@@ -1,0 +1,10 @@
+
+Time	Content		
+09:30 – 10:00	Coffee & Introductions		
+10:00 – 10:45	GitHub Copilot Fundamentals & Capabilities		
+10:45 – 12:15	Hands-On Lab 1: Application Modernization with GitHub		
+12:15 – 13:15	Lunch Break		
+13:15 – 14:00	GitHub Copilot - Agentic SDLC		
+14:00 – 15:30	Hands-On Lab 2: Agentic DevSecOps with GitHub
+15:30 – 16:00	Github Copilot Stories and Use Cases 		
+16:00	Wrap-up & Closing

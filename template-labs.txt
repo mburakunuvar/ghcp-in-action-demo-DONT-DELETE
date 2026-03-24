@@ -1,0 +1,15 @@
+
+
+entry level labs -suggested path for all  👨‍💻 
+Getting Started with GHCP https://github.com/mburakunuvar/ghcp-lab01-getting-started 
+
+
+Customize your GHCP Experience https://github.com/mburakunuvar/ghcp-lab02-customize-your-github-copilot-experience 
+intermediate level lab - for experienced users 👨‍💻  https://github.com/mburakunuvar/ghcp-lab03-application-modernization
+Application modernization with GHCP 
+
+
+
+SDLC Lab 👨‍💻 
+Agentic DevSecOps
+https://github.com/sohamda/aks-store-demo/blob/main/workshop-plan/workshop-overview.md
