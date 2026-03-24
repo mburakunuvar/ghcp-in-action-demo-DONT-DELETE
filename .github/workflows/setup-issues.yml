@@ -180,7 +180,7 @@ jobs:
         run: |
           gh issue create \
             --repo ${{ github.repository }} \
-            --label "agent-mode" \
+            --label "copilot-cli" \
             --title "Code Review and Performance" \
             --body "## Task
           Perform a code review of the full application (targeting the live deployed app):
@@ -188,12 +188,13 @@ jobs:
           1. **Code quality review** — focus on best practices, error handling, accessibility
           2. **Performance review** — focus on asset optimization, render-blocking resources, caching
 
-          The findings from each review should be filed as two new GitHub issues using \`gh issue create\`:
+          The findings from each review should be filed as three new GitHub issues using \`gh issue create\`:
           - Fix: missing alt attributes and semantic HTML
           - Fix: render-blocking CSS and missing meta tags
+          - Write and run unit tests for the application
 
           ## Assigned to
-          Agent Mode in IDE (VS Code) — review the codebase, then use \`gh issue create\` to file the findings.
+          Copilot CLI — review the codebase, then use \`gh issue create\` to file the findings.
 
           ## Note
           This step happens after Azure Deployment (#5). The reviews target the live deployed app.
